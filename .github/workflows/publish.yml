@@ -1,0 +1,17 @@
+name: Upload Extension
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package and Upload Extension
+        uses: murar8/gnome-extensions-action@0.1.1
+        with:
+          source-dir: .
+          username: ${{ secrets.GNOME_USERNAME }}
+          password: ${{ secrets.GNOME_PASSWORD }}
+          accept-tos: true
